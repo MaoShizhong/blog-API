@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build":"tsc && ts-cleaner",
     "server": "nodemon ./dist/app.js",
+    "dev": "concurrently -k -n COMPILER,NODEMON -c blueBright,magenta \"npm run ts\" \"ts-cleaner --watch\" \"DEBUG=blog-API:* npm run server\"",
     "ts": "tsc --watch",
     "test": "jest --detectOpenHandles --watch */*.test.js",
-    "dev": "concurrently -k -n COMPILER,NODEMON -c blueBright,magenta \"npm run ts\" \"ts-cleaner --watch\" \"DEBUG=blog-API:* npm run server\"",
     "start": "node ./dist/app.js"
   },
   "dependencies": {
